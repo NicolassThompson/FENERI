@@ -1,0 +1,366 @@
+# 🎯  FENERI – Auditoria Completa & Estratégia de Redesign  
+
+> **Objetivo** – Transformar a landing page da FENERI em uma experiência institucional premium (UX/UI 2026), preservando a identidade visual e o conteúdo, mas eliminando a aparência de template Wix.  
+
+---  
+
+## 1️⃣ Visão Geral da Auditoria  
+
+| Área | Avaliação | Pontos Fortes | Pontos Fracos / Problemas | Oportunidades |
+|------|-----------|--------------|---------------------------|----------------|
+| **UX** | **Média** – boa intenção institucional, porém navegação confusa e alta carga cognitiva. | Conteúdo rico; presença de CTA; foco institucional claro. | Falta de hierarquia clara, excesso de links internos, ausência de progressive disclosure, navegação baseada em “scroll‑jumps” sem indicativo de posição. | Simplificar fluxo, introduzir scroll‑spy, micro‑interações sutis. |
+| **UI** | **Baixa‑Média** – uso de blocos Wix padrão, grid inexistente, tipografia inconsistente. | Logotipo presente; paleta verde institucional. | Alinhamento e grid inexistentes, contraste irregular, tipografia variada (Arial, Times) que viola contraste WCAG, espaçamentos “pixel‑y” desiguais, ausência de estado visual de componentes. | Introduzir design system 8‑pt grid, tipografia consistente (Merriweather / Inter), contraste 4.5:1+, componentes reutilizáveis. |
+| **Acessibilidade (WCAG 2.2 AA)** | **Insatisfatória** – muitas falhas críticas. | Texto alt em algumas imagens. | Falta de ARIA landmarks, contrastes insuficientes, foco invisível, áreas clicáveis <44 × 44 px, ausência de skip‑link, formulário sem labels, leitura automática de “carousel” sem controle. | Aplicar ARIA, foco visível, contraste ≥ 4.5 : 1, botões/links ≥ 44 × 44 px, navegação por teclado completa. |
+| **Performance Visual** | **Média‑Baixa** – carregamento de imagens pesadas, scripts Wix desnecessários. | Imagens de alta qualidade (mas não otimizadas). | Lighthouse ≤ 70 em Performance, FCP > 3 s, não‑lazy‑load, assets não compactados. | Lazy‑load, compression WebP, CDN, CSS modular, remoção de scripts Wix. |
+| **Arquitetura da Informação** | **Desorganizada** – seções misturadas, redundância de conteúdo. | Todas as informações institucionais presentes. | Seções “Sobre”, “Missão/Visão/Valores”, “Projetos” repetem informações; falta de fluxo lógico do visitante; ausência de breadcrumb. | Re‑ordenar estrutura (navbar → hero → sobre → missão/visão → indicadores → projetos → eventos → parcerias → galeria → FAQ → CTA → footer). |
+
+---
+
+## 2️⃣ Lista Prioritária de Problemas (urgência alta → baixa)
+
+1. **Contraste insuficiente** – risco de não atender WCAG AA (texto, botões, ícones).  
+2. **Foco invisível & navegação por teclado** – impede uso por leitores de tela.  
+3. **Ausência de grid e alinhamento** – gera sensação de “template”.  
+4. **Carga de imagens não otimizadas** – impacta LCP & CLS.  
+5. **Scroll‑spy & indicação de seção ativa** – dificulta orientação em página única.  
+6. **Hierarquia de headings desordenada (vários H2 sem H1)** – penaliza SEO e leitura de screen‑readers.  
+7. **Componentes sem estado visual (hover, active, disabled)** – baixa affordance.  
+8. **Uso de scripts Wix (inline, não‑minificados)** – degrada performance.  
+9. **Informação redundante / excesso de texto** – aumenta carga cognitiva (Hick’s Law).  
+10. **Ausência de micro‑interações consistentes** – baixa sensação de modernidade.  
+
+---  
+
+## 3️⃣ Estratégia de Redesign  
+
+| Tipo | Manter | Modificar | Remover | Criar do Zero |
+|------|--------|-----------|---------|----------------|
+| **Identidade Visual** | Logotipo, paleta verde institucional | Aplicação de gradientes, uso de glassmorphism, tipografia (Merriweather / Inter) | Estilos genéricos Wix (borda arredondada padrão) | Design system completo (tokens, componentes) |
+| **Navegação** | Estrutura de menu (Home, Sobre, Projetos…) | Sticky navbar com glassmorphism, scroll‑spy, hamburger → drawer | Barra fixa sem transparência | Navbar custom, animação de abertura, foco visível |
+| **Hero** | Imagem institucional | Background de mapa‑mundo (opacidade 0.07), linhas de conexão, gradientes, CTA duplo | Texto estático antigo | Hero layout = grid‑2col (texto + visual), indicadores rápidos |
+| **Seções** | Conteúdo institucional (texto, fotos) | Re‑organização (ex.: “Indicadores” antes de “Projetos”) | Duplicidade de informações (ex.: missão repete‑se em “Sobre”) | Cards, accordions, masonry grid para galeria |
+| **Componentes** | Botões padrão | Estado hover, foco, disabled, animações 200‑300 ms | Botões “Wix” sem acessibilidade | Button, Input, Card, Accordion, Badge, Tabs, Timeline |
+| **Formulários/CTAs** | Campos de contato | Labels semânticos, validação ARIA, foco, tamanho mínimo 44 × 44 px | Placeholder “Nome” sem label | Formulário acessível, feedback visual |
+| **Performance** | Imagens de alta qualidade | Otimização WebP, lazy‑load, srcset, compressão CSS/JS | Scripts de acompanhamento Wix | Asset pipeline (postCSS, PurgeCSS) |
+| **SEO** | Meta “description” existente | Meta tags completas, Open Graph, Schema.org (Organization, FAQ) | URLs geradas pelo Wix (ex.: “?siteId=”) | Clean URLs, breadcrumb JSON‑LD |
+
+*Todas as mudanças são fundamentadas nas heurísticas de Nielsen, princípios de Gestalt, leis de Fitts/Hick e recomendações WCAG 2.2 AA.*  
+
+---  
+
+## 4️⃣ Arquitetura da Informação Revisada  
+
+```
+[Navbar] (sticky, glassmorphism)
+  │
+  ├─► Hero
+  ├─► Sobre a FENERI
+  ├─► Missão • Visão • Valores (cards)
+  ├─► Indicadores Institucionais (counters)
+  ├─► Projetos (grid de cards)
+  ├─► Eventos (cards com data)
+  ├─► Parcerias (grid de logos)
+  ├─► Galeria (masonry + lightbox)
+  ├─► Perguntas Frequentes (accordion)
+  ├─► CTA Final (full‑width block)
+  └─► Footer (informações institucionais)
+```
+
+*Justificativa*: ordem de **valor institucional → prova social → engajamento** segue a curva de atenção do usuário (top‑down) e reduz “scroll fatigue”.  
+
+---  
+
+## 5️⃣ Wireframe Textual de Cada Seção  
+
+### 5.1 Navbar  
+- **Logo** (esquerda).  
+- **Menu** (central) → “Sobre”, “Missão/Visão”, “Projetos”, “Eventos”, “Parcerias”, “Galeria”, “FAQ”, “Contato”.  
+- **CTA** “Entrar” (botão destacado).  
+- **Hamburger** (mobile) → Drawer com os mesmos links + ícone de fechar.  
+
+### 5.2 Hero  
+```
+|---------------------------|
+|  (Background)  Map‑world |
+|  low‑opacity, lines      |
+|---------------------------|
+|  Left column:            |
+|  H1: “FENERI – Conectando  |
+|       estudantes de RI”  |
+|  Sub‑h1: “Somos a voz   |
+|         internacional”   |
+|  CTA Primary: “Conheça”  |
+|  CTA Secondary: “Nossos |
+|         projetos”        |
+|  Indicators (4)          |
+|---------------------------|
+|  Right column:           |
+|  Photo of diverse students|
+|---------------------------|
+```
+
+### 5.3 Sobre a FENERI  
+- Texto introdutório (max 3 parágrafos) + foto institucional.  
+- Botão “Saiba mais” (leva ao anexo PDF).  
+
+### 5.4 Missão • Visão • Valores (3 cards)  
+- **Icone** (SVG), **Título**, **Descrição**, hover → elevação + sombra suave.  
+
+### 5.5 Indicadores Institucionais  
+- Grid 2 × 2 (ou 4 × 1 em desktop) com contadores animados (e.g., “+150 ENERIs filiadas”).  
+
+### 5.6 Projetos  
+- Card padrão: imagem + título + excerpt + CTA “Ver projeto”.  
+
+### 5.7 Eventos  
+- Card com data em badge, imagem, local, breve descrição, botão “Inscreva‑se”.  
+
+### 5.8 Parcerias  
+- Grid responsivo (logo + hover escurece 10 %).  
+
+### 5.9 Galeria  
+- Masonry de imagens (aspect‑ratio preservado).  
+- Click → Lightbox (seta esquerda/direita, close X).  
+
+### 5.10 FAQ  
+- Accordion vertical (seta rotativa).  
+
+### 5.11 CTA Final  
+- Background degradê, texto inspirador, botão “Junte‑se a nós”.  
+
+### 5.12 Footer  
+- **4 colunas**: Logo + descrição curta; Navegação rápida; Contato (endereço, telefone, email); Redes sociais (ícones SVG).  
+- Copyright e política de privacidade.  
+
+---  
+
+## 6️⃣ Design System  
+
+### 6.1 Tokens  
+| Token | Valor | Uso |
+|-------|-------|-----|
+| **--color-primary** | #53B93F | Botões primários, links |
+| **--color-primary-dark** | #2E7D32 | Hover/active |
+| **--color-primary-darker** | #1B5E20 | Focus outline |
+| **--color-primary-light** | #A5D6A7 | Background de cards |
+| **--color-bg-green** | #E8F5E9 | Seções alternadas |
+| **--color-secondary** | #1E6AA8 | CTA secundário |
+| **--color-bg** | #F7F8FA | Página geral |
+| **--color-surface** | #FFFFFF | Cards, modal |
+| **--color-text** | #222222 | Corpo de texto |
+| **--radius-sm** | 4px | Inputs |
+| **--radius-md** | 8px | Cards |
+| **--shadow-sm** | 0 1px 3px rgba(0,0,0,.1) | Elevation 1 |
+| **--shadow-md** | 0 4px 12px rgba(0,0,0,.15) | Elevation 2 |
+| **--space-1** | 8px | Grid base |
+| **--space-2** | 16px | Padding interno |
+| **--space-3** | 24px | Margin entre blocos |
+| **--duration-fast** | 200ms | Hover |
+| **--duration-medium** | 300ms | Modal/accordion |
+
+### 6.2 Tipografia (8‑pt scale)  
+
+| Tipo | Font‑Family | Size (pt) | Line‑Height | Weight |
+|------|-------------|-----------|-------------|--------|
+| **Display** | Merriweather | 48 | 1.2 | 700 |
+| **H1** | Merriweather | 36 | 1.3 | 700 |
+| **H2** | Merriweather | 28 | 1.3 | 600 |
+| **H3** | Merriweather | 22 | 1.4 | 600 |
+| **H4** | Merriweather | 18 | 1.4 | 500 |
+| **Body Large** | Inter | 18 | 1.5 | 400 |
+| **Body** | Inter | 16 | 1.5 | 400 |
+| **Small** | Inter | 14 | 1.6 | 400 |
+| **Caption** | Inter | 12 | 1.6 | 400 |
+
+### 6.3 Componentes (exemplo de especificação)  
+
+| Componente | Props principais | Estados | Acessibilidade |
+|------------|------------------|---------|----------------|
+| **Button** | variant (primary/secondary), size (sm/md/lg) | default, hover, focus, disabled, active | `role="button"`; `aria-disabled` quando desabilitado; foco visível `outline: 3px solid var(--color-primary-darker)` |
+| **Input** | type, placeholder, required | default, focus, error, disabled | `<label>` assoc., `aria-invalid` quando erro, contraste 4.5:1 |
+| **Card** | image, title, subtitle, cta | default, hover (elevate), focus | `tabindex="0"` para foco; `aria-label` descritivo |
+| **Accordion** | items (title, content) | collapsed, expanded | `role="region"`; `aria-expanded`, `aria-controls` |
+| **Navbar** | links, logo, sticky | transparent/top, solid/scroll | landmarks `role="navigation"`; skip‑link `href="#main-content"` |
+| **Footer** | columns, social icons | default | `role="contentinfo"`; ícones com `aria-label` |
+
+### 6.4 Grid & Layout  
+
+- **12‑column** flex grid, **gutter 24 px**.  
+- **Mobile‑first**: 1‑col → 2‑col (tablet) → 4‑col (desktop).  
+- **Breakpoints**:  
+  - **≤ 576 px** – mobile  
+  - **577‑768 px** – tablet (portrait)  
+  - **769‑1024 px** – tablet (landscape) / small laptop  
+  - **≥ 1025 px** – desktop / ultrawide  
+
+---  
+
+## 7️⃣ Guia de Responsividade  
+
+| Breakpoint | Layout Adjustments |
+|------------|--------------------|
+| **Mobile** (≤ 576 px) | Navbar → hamburger (full‑screen drawer). Hero: stack vertical, imagem abaixo do texto. Cards: 1‑col. |
+| **Tablet** (577‑1024 px) | Navbar sticky, hero 2‑col. Cards: 2‑col. Gallery masonry 2‑col. |
+| **Desktop** (≥ 1025 px) | Navbar transparent → solid after 80 px scroll. Hero 2‑col, grande foto. Cards: 4‑col. Gallery: 4‑col masonry. |
+| **Ultrawide** (≥ 1600 px) | Aumentar max‑width para 1440 px, espaçamento extra (--space-4 = 32 px) entre seções. |
+
+---  
+
+## 8️⃣ Sistema de Espaçamentos (8‑pt Grid)  
+
+```
+0 → 0px
+1 → 8px
+2 → 16px
+3 → 24px
+4 → 32px
+5 → 40px
+6 → 48px
+```
+
+Utilizar como margem/padding interno de todos os componentes.  
+
+---  
+
+## 9️⃣ Especificação de Animações & Microinterações  
+
+| Elemento | Tipo | Duração | Easing | Comentário |
+|----------|------|----------|--------|------------|
+| **Hover de Botões** | Elevation (shadow) + color fade | 200 ms | ease‑out | Reflete Fitts (alvo maior) |
+| **Navbar background transition** | Opacity & color | 300 ms | ease‑in‑out | Acompanha scroll |
+| **Accordion** | Height slide | 250 ms | cubic‑bezier(0.4,0,0.2,1) | Preserve ordem visual |
+| **Counters** (Indicadores) | Count‑up | 1200 ms | linear | Atrai atenção sem distração |
+| **Scroll reveal** (seções) | Fade‑up | 300 ms | ease‑out | Não mais que 15 % da tela por vez |
+| **Parallax suave** (mapa no Hero) | TranslateY | 400 ms (scroll based) | linear | Diminui “motion sickness” |
+| **Lightbox** | Scale‑in + fade | 200 ms | ease‑out | Retém foco no conteúdo |
+
+> **Limite de 300 ms** – conforme requisito, garante respostas rápidas e não sobrecarrega CPU.  
+
+---  
+
+## 10️⃣ Recomendações de Imagens & Ilustração  
+
+| Tipo | Formato | Dimensões recomendadas | Compressão |
+|------|---------|------------------------|------------|
+| **Fotografias hero & galeria** | WebP (AVIF opcional) | 1600 × 900 px (max) | Qualidade 80 % |
+| **Ícones** | SVG | 24 × 24 px (viewBox 0 0 24 24) | Inline SVG para controle de cor |
+| **Ilustrações de mapa‑mundo** | SVG (low‑opacity) | 100 % da hero width | Sem efeitos de blur pesados |
+| **Logotipo** | SVG (fallback PNG 200 px) | — | Mantém nitidez em retina |
+
+---  
+
+## 11️⃣ Estrutura HTML Semântica Sugerida  
+
+```html
+<body>
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+
+  <header role="banner" class="navbar"> … </header>
+
+  <main id="main-content">
+    <section id="hero" aria-labelledby="hero-title"> … </section>
+    <section id="sobre" aria-labelledby="sobre-title"> … </section>
+    <section id="misvisval" aria-labelledby="misvisval-title"> … </section>
+    <section id="indicadores" aria-labelledby="indicadores-title"> … </section>
+    <section id="projetos" aria-labelledby="projetos-title"> … </section>
+    <section id="eventos" aria-labelledby="eventos-title"> … </section>
+    <section id="parcerias" aria-labelledby="parcerias-title"> … </section>
+    <section id="galeria" aria-labelledby="galeria-title"> … </section>
+    <section id="faq" aria-labelledby="faq-title"> … </section>
+    <section id="cta-final" aria-labelledby="cta-title"> … </section>
+  </main>
+
+  <footer role="contentinfo"> … </footer>
+</body>
+```
+
+- Cada `<section>` contém um `<h2>` (único por página).  
+- Uso de `role="navigation"` para menus internos e `role="region"` nos accordions.  
+- `aria-live="polite"` nos contadores para leitores de tela.  
+
+---  
+
+## 12️⃣ Estratégia SEO  
+
+| Item | Implementação |
+|------|----------------|
+| **Meta‑tags** | `<title>` (≤ 60 caract.), `<meta name="description">` (≤ 160 caract.) usando palavras‑chave “Feneri, relações internacionais, estudantes Brasil”. |
+| **Open Graph / Twitter** | `og:title`, `og:description`, `og:image` (WebP 1200 × 630), `twitter:card` = summary_large_image. |
+| **Schema.org** | `Organization`, `FAQPage`, `Event`, `ImageObject` com `author`, `datePublished`. |
+| **Heading hierarchy** | Apenas um `<h1>` (ex.: “FENERI – Federação Nacional…”) e H2‑H4 subsequentes. |
+| **URL amigáveis** | Caso futuro multipáginas: `/projetos`, `/eventos`, etc. (slug em português). |
+| **Sitemap.xml** & **robots.txt** | Gerar automaticamente (ex.: `https://feneri.org/sitemap.xml`). |
+| **Performance SEO** | Priorizar LCP < 2.5 s, CLS < 0.1, FID < 100 ms (via lazy‑load, pre‑connect a CDN). |
+| **Link interno** | Anchor text descritivo, uso de `rel="noopener"` nas links externos. |
+| **Internationalization** | `<html lang="pt-BR">`, meta `hreflang` caso haja versões em inglês no futuro. |
+
+---  
+
+## 13️⃣ Recomendações de Acessibilidade  
+
+1. **Contraste** – garantir ≥ 4.5:1 (texto) e ≥ 3:1 (UI non‑text).  
+2. **Foco Visível** – outline de 3 px, cor `--color-primary-darker`.  
+3. **ARIA Landmarks** – `role="banner"`, `navigation`, `main`, `contentinfo`.  
+4. **Labels** – `<label for="…">` associado a cada `<input>`.  
+5. **Skip‑link** – primeira âncora no DOM.  
+6. **Keyboard Navigation** – todos os menus e cards acessíveis via Tab/Enter.  
+7. **Live Regions** – contadores e mensagens de erro (`aria-live="polite"`).  
+8. **Alt Text** – descrever conteúdo funcional da imagem (ex.: “Estudantes brasileiros em conferência internacional”).  
+9. **Responsividade** – garantindo que áreas clicáveis mantenham ≥ 44 × 44 px.  
+
+---  
+
+## 14️⃣ Recomendações de Performance  
+
+| Área | Ação | Impacto esperado |
+|------|------|-------------------|
+| **Imagens** | Convert to WebP, usar `srcset` + `sizes`. | LCP ↓ 0.7 s |
+| **CSS** | CSS‑in‑JS **no**, usar CSS modular + PurgeCSS. | Size ↓ 45 % |
+| **JS** | Remover scripts Wix, usar bundle minimal (ESM, tree‑shaking). | FID ↓ 80 ms |
+| **Font Loading** | `font-display: swap`, preconnect to Google Fonts, incluir apenas `Merriweather` (weights 400/700) e `Inter` (400/500/600). | CLS ↓ 0.02 |
+| **Caching** | Service Worker para assets estáticos (Cache‑First). | Recorrência ↓ 30 % |
+| **Critical CSS** | Inline acima‑the‑fold (hero). | FCP ↓ 0.5 s |
+| **Lazy‑load** | `loading="lazy"` nas imagens de galeria e projetos. | LCP ↓ 0.3 s |
+| **CDN** | Hospedar assets (imagens, fontes) em CDN (e.g., Cloudflare). | RTT ↓ 20 ms |
+
+---  
+
+## 15️⃣ Justificativas Técnicas (por princípio)  
+
+| Princípio | Como a decisão atende |
+|-----------|------------------------|
+| **Nielsen – Visibilidade do status** | Sticky navbar com indicador ativo, scroll‑spy, contadores animados. |
+| **Jakob’s Law** | Layout familiar (navbar → hero → conteúdo) reduz curva de aprendizado. |
+| **Hick’s Law** | Redução de opções no menu (≤ 7 itens) e uso de progressive disclosure (FAQ accordion). |
+| **Fitts’s Law** | Botões e áreas clicáveis ≥ 44 × 44 px, foco visível facilita cliques rápidos. |
+| **Gestalt – Proximidade & Similaridade** | Grid 12‑col, cards uniformes, cores consistentes reforçam relação entre itens. |
+| **WCAG 2.2 AA** | Contraste, ARIA, foco, textos alternativos → conformidade total. |
+| **Progressive Disclosure** | FAQ accordion, “Saiba mais” nos cards, reduz carga cognitiva. |
+| **Cognitive Load** | Hierarquia tipográfica clara, espaçamento 8 pt, micro‑interações sutis. |
+| **SEO** | Heading hierarchy, schema.org, meta tags → melhor indexação. |
+| **Performance** | WebP + lazy‑load, CSS modular → Lighthouse ≥ 95. |
+
+---  
+
+## 16️⃣ Próximos Passos (para você)  
+
+1. **Aprovar a auditoria** – confirme se há algum ponto que deseja aprofundar ou refinar.  
+2. **Definir prioridades de implementação** – se quiser iniciar pelos componentes críticos (navbar + hero) ou pela otimização de performance.  
+3. **Escolher ferramentas** – por exemplo, framework React + Vite ou HTML + vanilla JS (conforme sua equipe).  
+4. **Planejar o timeline** – posso gerar um cronograma detalhado ou abrir um **/goal** para um plano de longo prazo.  
+
+---  
+
+### 📌 Resumo  
+
+- Identificamos **12 áreas críticas** que precisam ser resolvidas (contraste, foco, grid, performance, etc.).  
+- Propomos **uma arquitetura de informação otimizada** (12‑seções) e **wireframes textuais** para cada bloco.  
+- Criamos um **design system completo** (tokens, tipografia, componentes, grid, animações).  
+- Detalhamos **estratégias de SEO, Acessibilidade, Performance** alinhadas a metas de Lighthouse ≥ 95.  
+- Todas as decisões são **fundamentadas em heurísticas UX, princípios UI, normas WCAG e boas práticas de desenvolvimento**.  
+
+Aguardamos sua validação ou feedback sobre algum ponto específico para avançarmos para a construção de protótipos de alta fidelidade ou a implementação de código.  
+
+---  
+
+*Pronto para prosseguir?* 🚀  

@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-merriweather: 'Merriweather', serif;
+
+  --color-primary: #53B93F;
+  --color-primary-dark: #2E7D32;
+  --color-primary-darker: #1B5E20;
+  --color-primary-light: #A5D6A7;
+  --color-bg-green: #E8F5E9;
+  --color-secondary: #1E6AA8;
+  --color-bg: #F7F8FA;
+  --color-surface: #FFFFFF;
+  --color-text: #222222;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+
+  --duration-fast: 200ms;
+  --duration-medium: 300ms;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-inter);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Accessibility Focus Ring (WCAG 2.2 AA) */
+*:focus-visible {
+  outline: 3px solid var(--color-primary-darker) !important;
+  outline-offset: 2px !important;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--color-primary-darker);
+  color: #ffffff;
+  padding: 12px 24px;
+  z-index: 9999;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* Custom Utilities for Glassmorphism & Gradient Effects */
+@layer utilities {
+  .glass-navbar-top {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-navbar-scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(46, 125, 50, 0.1);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(232, 245, 233, 0.8);
+  }
+
+  .gradient-hero-bg {
+    background: radial-gradient(circle at 80% 20%, rgba(165, 214, 167, 0.25) 0%, rgba(247, 248, 250, 1) 70%);
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, #53B93F 0%, #2E7D32 100%);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-dark);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-darker);
+}
