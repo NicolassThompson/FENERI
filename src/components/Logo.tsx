@@ -35,9 +35,7 @@ export const Logo: React.FC<LogoProps> = ({ className = "" }) => {
         <span className="font-heading font-bold text-xl tracking-tight text-textMain group-hover:text-primary-dark transition-colors duration-200">
           FENERI
         </span>
-        <span className="text-[10px] font-semibold tracking-wider uppercase text-gray-500 hidden sm:inline-block">
-          Federação Nacional de RI
-        </span>
+
       </div>
     </Link>
   );

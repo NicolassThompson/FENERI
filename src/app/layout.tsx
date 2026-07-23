@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     "Estudantes RI",
     "Diplomacia",
     "ENERI",
-    "Federação Nacional RI",
+    "Federação Nacional de Estudantes de Relações Internacionais",
     "Políticas Internacionais",
   ],
   authors: [{ name: "FENERI" }],

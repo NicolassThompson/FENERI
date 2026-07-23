@@ -11,160 +11,161 @@ import {
 
 export const NAV_ITEMS: NavItem[] = [
   { label: "Sobre", href: "#sobre" },
-  { label: "Valores", href: "#misvisval" },
-  { label: "Indicadores", href: "#indicadores" },
+  { label: "Missão & Valores", href: "#misvisval" },
+  { label: "CONERI", href: "#coneri" },
+  { label: "Carteirinha", href: "#carteirinha" },
   { label: "Projetos", href: "#projetos" },
   { label: "Eventos", href: "#eventos" },
-  { label: "Parcerias", href: "#parcerias" },
+  { label: "Parceiros", href: "#parcerias" },
   { label: "Galeria", href: "#galeria" },
   { label: "FAQ", href: "#faq" },
 ];
 
 export const INSTITUTIONAL_INDICATORS: IndicatorItem[] = [
   {
-    id: "eneris",
+    id: "ceris",
     value: 150,
     suffix: "+",
-    label: "Entidades Filiadas",
-    description: "Centros e Diretórios Acadêmicos articulados nacionalmente.",
+    label: "CERIs Filiados",
+    description: "Centros e Diretórios Acadêmicos articulados pelo CONERI em todo o país.",
+  },
+  {
+    id: "edicoes-eneri",
+    value: 28,
+    suffix: "ª",
+    label: "Edição do ENERI",
+    description: "Tradição em grandes encontros nacionais da comunidade internacionalista.",
   },
   {
     id: "estados",
     value: 27,
     suffix: "",
     label: "Unidades da Federação",
-    description: "Presença em todas as regiões do Brasil e DF.",
+    description: "Representatividade nacional unificada com rodízio entre 5 regiões.",
   },
   {
-    id: "eventos",
-    value: 40,
-    suffix: "+",
-    label: "Eventos Realizados",
-    description: "Congressos, encontros e fóruns diplomáticos acadêmicos.",
-  },
-  {
-    id: "anos",
-    value: 25,
-    suffix: " anos",
-    label: "De História e Atuação",
-    description: "Representando os estudantes de RI no cenário global.",
+    id: "desconto-max",
+    value: 80,
+    suffix: "%",
+    label: "Descontos Exclusivos",
+    description: "Benefícios com a Carteirinha Nacional do Estudante Internacionalista.",
   },
 ];
 
 export const VALUES_CARDS: ValueCardItem[] = [
   {
     id: "missao",
-    title: "Nossa Missão",
+    title: "Missão",
     description:
-      "Integrar, representar e fortalecer a comunidade de estudantes e profissionais de Relações Internacionais no Brasil, promovendo excelência acadêmica e inserção diplomática.",
+      "Representar os estudantes de Relações Internacionais do Brasil e defender seus interesses no âmbito nacional, além de realizar a promoção contínua da área das Relações Internacionais.",
     iconName: "Compass",
   },
   {
     id: "visao",
-    title: "Nossa Visão",
+    title: "Visão",
     description:
-      "Ser a principal entidade de representação estudantil em Relações Internacionais da América Latina, reconhecida pela liderança, inovação e impacto nas políticas públicas de ensino.",
+      "Ser uma organização de referência para as relações internacionais e para os movimentos estudantis da área e do país, integrando a academia, a diplomacia e a sociedade.",
     iconName: "Globe",
   },
   {
     id: "valores",
-    title: "Nossos Valores",
+    title: "Valores",
     description:
-      "Diplomacia ativa, pluralismo de ideias, transparência institucional, compromisso com a ética internacional e defesa irrestrita da educação de qualidade.",
+      "Igualdade • Respeito • Transparência • Empoderamento • Liderança • Colaboração • Voluntariado. Princípios que regem todas as ações da Federação.",
     iconName: "ShieldCheck",
   },
 ];
 
 export const PROJECTS: ProjectItem[] = [
   {
-    id: "eneri",
-    title: "Encontro Nacional dos Estudantes de RI (ENERI)",
-    category: "Congresso Nacional",
+    id: "carteirinha",
+    title: "Carteirinha Nacional do Estudante Internacionalista (CNIE)",
+    category: "Benefícios & Documento Oficial",
     description:
-      "O maior evento de Relações Internacionais da América Latina, reunindo anualmente milhares de congressistas, embaixadores e acadêmicos renomados.",
+      "Documento oficial com QR Code vinculado à base de dados nacional (Lei 12.933/2013). Garante meia-entrada em cinemas e shows, além de descontos de 10% a 80% nos parceiros da FENERI (Vocação Diplomata, What's Rel?, Mission Abroad). Apenas R$ 30,00 com repasse direto para o seu CA/DA e ações sociais.",
+    imageUrl: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&auto=format&fit=crop",
+    ctaText: "Solicitar Carteirinha",
+    ctaLink: "#carteirinha",
+  },
+  {
+    id: "eneri",
+    title: "Encontro Nacional de Estudantes de RI (ENERI)",
+    category: "Encontro Acadêmico Nacional",
+    description:
+      "O maior evento de estudantes de Relações Internacionais da América Latina. Reúne anualmente congressistas de todo o Brasil com palestras de diplomatas renomados, apresentações de trabalhos acadêmicos, festas e a realização do primeiro CONERI do ano.",
     imageUrl: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop",
-    ctaText: "Saiba mais sobre o ENERI",
+    ctaText: "Saiba Mais sobre o ENERI",
     ctaLink: "#eventos",
   },
   {
-    id: "revista",
-    title: "Revista Científica FENERI",
-    category: "Publicação Acadêmica",
+    id: "coneri",
+    title: "Conselho Nacional de Estudantes de RI (CONERI)",
+    category: "Deliberação & Governança",
     description:
-      "Periódico com avaliação entre pares focado em publicação de artigos originais, resenhas e ensaios inéditos produzidos por estudantes de graduação e pós.",
-    imageUrl: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1200&auto=format&fit=crop",
-    ctaText: "Acessar Edições",
-    ctaLink: "#",
-  },
-  {
-    id: "embaixadores",
-    title: "Programa de Embaixadores Universitários",
-    category: "Liderança",
-    description:
-      "Rede de representantes oficiais da FENERI dentro de universidades públicas e privadas em todo o território nacional.",
+      "Órgão de representação dos estudantes dentro da FENERI, com função deliberativa, consultiva e fiscalizadora. Reúne-se 3 vezes ao ano respeitando o rodízio de regiões para propor alterações no Estatuto, homologar gestões e avaliar contas da Federação.",
     imageUrl: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
-    ctaText: "Seja um Embaixador",
-    ctaLink: "#",
+    ctaText: "Conhecer o CONERI",
+    ctaLink: "#coneri",
   },
   {
-    id: "carreiras",
-    title: "Feira de Carreiras Globais & Diplomacia",
-    category: "Desenvolvimento Profissional",
+    id: "revista-anais",
+    title: "Revista FENERI & Anais do ENERI",
+    category: "Publicações Científicas",
     description:
-      "Conexão direta entre estudantes de RI, organismos internacionais, ONGs globais, multinacionais e carreiras do Serviço Exterior Brasileiro.",
-    imageUrl: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop",
-    ctaText: "Ver Oportunidades",
+      "Acesso ao acervo histórico de artigos acadêmicos, ensaios e resenhas publicados pela comunidade de estudantes e jovens pesquisadores de Relações Internacionais do Brasil.",
+    imageUrl: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1200&auto=format&fit=crop",
+    ctaText: "Acessar Publicações",
     ctaLink: "#",
   },
 ];
 
 export const EVENTS: EventItem[] = [
   {
-    id: "eneri-2026",
-    title: "XXIX ENERI 2026 — Edição Nacional",
-    date: "15 a 18 de Outubro de 2026",
-    location: "Brasília / DF — Centro de Convenções Ulysses Guimarães",
+    id: "eneri-oficial",
+    title: "XXVIII ENERI — Encontro Nacional de Estudantes de RI",
+    date: "Evento Anual Nacional",
+    location: "Sede votada no CONERI anterior (Rodízio de Regiões)",
     description:
-      "Quatro dias de imersão total com minicursos, simulações da ONU, palestras diplomáticas e apresentação de trabalhos acadêmicos.",
+      "Palestras com diplomatas e internacionalistas renomados, grupos de trabalho acadêmicos, reuniões deliberativas do CONERI e integração cultural dos estudantes do Brasil.",
     imageUrl: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1200&auto=format&fit=crop",
-    ctaText: "Inscreva-se Agora",
+    ctaText: "Garantir Inscrição com Desconto",
     ctaLink: "#",
   },
   {
-    id: "forum-geopolitica",
-    title: "Fórum Diplomacia Jovem & Transição Energética",
-    date: "28 de Novembro de 2026",
-    location: "São Paulo / SP & Transmissão Online",
+    id: "coneri-niterói",
+    title: "Reuniões Ordinárias do CONERI",
+    date: "3 Edições por Ano",
+    location: "Regiões Norte, Sul, Nordeste, Sudeste e Centro-Oeste",
     description:
-      "Debate multilateral focado na cooperação internacional para sustentabilidade, clima e inovação diplomática no Sul Global.",
+      "Espaço democrático onde qualquer estudante de Relações Internacionais tem voz para fomentar debates, propor reformas estatutárias e avaliar a gestão da FENERI.",
     imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop",
-    ctaText: "Garantir Vaga",
+    ctaText: "Consultar Calendário de Reuniões",
     ctaLink: "#",
   },
 ];
 
 export const PARTNERS: PartnerItem[] = [
   {
-    id: "mre",
-    name: "Ministério das Relações Exteriores (Itamaraty)",
+    id: "vocacao-diplomata",
+    name: "Vocação Diplomata — Preparatório CACD",
     logoUrl: "https://images.unsplash.com/photo-1569974498991-d3c12a504f95?q=80&w=400&auto=format&fit=crop",
-    websiteUrl: "https://www.gov.br/mre",
+    websiteUrl: "https://www.vocacaodiplomata.com.br",
   },
   {
-    id: "abri",
-    name: "Associação Brasileira de Relações Internacionais (ABRI)",
+    id: "whats-rel",
+    name: "What's Rel? — O Portal do Internacionalista",
     logoUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=400&auto=format&fit=crop",
-    websiteUrl: "#",
+    websiteUrl: "https://whatsrel.com.br",
   },
   {
-    id: "unesco",
-    name: "UNESCO Brasil",
+    id: "mission-abroad",
+    name: "Mission Abroad — Oportunidades Internacionais",
     logoUrl: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=400&auto=format&fit=crop",
-    websiteUrl: "#",
+    websiteUrl: "https://missionabroad.org",
   },
   {
-    id: "onu",
-    name: "UNIC Rio — Nações Unidas Brasil",
+    id: "eneri-parceiros",
+    name: "Rede de CAs e DAs Filiados (CONERI)",
     logoUrl: "https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=400&auto=format&fit=crop",
     websiteUrl: "#",
   },
@@ -173,45 +174,45 @@ export const PARTNERS: PartnerItem[] = [
 export const GALLERY: GalleryItem[] = [
   {
     id: "gal-1",
-    title: "Cerimônia de Abertura do ENERI",
-    caption: "Discurso institucional perante mais de 2.000 congressistas.",
+    title: "Cerimônia do ENERI",
+    caption: "Abertura oficial perante mais de 2.000 congressistas.",
     imageUrl: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop",
     category: "Eventos",
   },
   {
     id: "gal-2",
     title: "Mesa Redonda Diplomática",
-    caption: "Embaixadores e diplomatas discutindo política externa.",
+    caption: "Diplomatas e acadêmicos debatendo política externa.",
     imageUrl: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop",
     category: "Painéis",
   },
   {
     id: "gal-3",
-    title: "Simulação de Organismo Internacional",
-    caption: "Estudantes atuando como delegados em comitê de crises.",
+    title: "Reunião Plenária do CONERI",
+    caption: "Estudantes e delegados votando pautas do movimento estudantil.",
     imageUrl: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop",
-    category: "Academico",
+    category: "CONERI",
   },
   {
     id: "gal-4",
     title: "Assembleia Geral da FENERI",
-    caption: "Votação das diretrizes nacionais com os Centros Acadêmicos.",
+    caption: "Deliberações com Centros e Diretórios Acadêmicos.",
     imageUrl: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
     category: "Assembleia",
   },
   {
     id: "gal-5",
-    title: "Workshop de Negociação Internacional",
-    caption: "Treinamento de soft skills para carreiras globais.",
+    title: "Workshop de Negociação",
+    caption: "Treinamento prático de soft skills e diplomacia corporativa.",
     imageUrl: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop",
     category: "Capacitação",
   },
   {
     id: "gal-6",
-    title: "Entrega do Prêmio FENERI de Pesquisa",
-    caption: "Reconhecimento dos melhores trabalhos de conclusão de curso.",
+    title: "Apresentações de Trabalhos Acadêmicos",
+    caption: "Estudantes apresentando pesquisas e artigos científicos.",
     imageUrl: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop",
-    category: "Prêmios",
+    category: "Pesquisa",
   },
 ];
 
@@ -220,30 +221,30 @@ export const FAQS: FAQItem[] = [
     id: "faq-1",
     question: "O que é a FENERI?",
     answer:
-      "A FENERI (Federação Nacional dos Estudantes de Relações Internacionais do Brasil) é a entidade máxima de representação estudantil do curso de Relações Internacionais no país. Atuamos integrando Centros e Diretórios Acadêmicos, promovendo eventos acadêmicos de abrangência nacional e defendendo os interesses da categoria junto aos órgãos de ensino e ao mercado.",
+      "A Federação Nacional de Estudantes de Relações Internacionais do Brasil (FENERI) é a entidade geral de representação das e dos estudantes de graduação de Relações Internacionais em todo o Brasil.",
   },
   {
     id: "faq-2",
-    question: "Como nossa entidade estudantil (CA/DA) pode se filiar?",
+    question: "O que é e como funciona o CONERI?",
     answer:
-      "A filiação é aberta a todos os Centros Acadêmicos e Diretórios Acadêmicos regularmente constituídos em cursos de Relações Internacionais no Brasil. Basta entrar em contato com nossa Secretaria de Relações Internas e preencher a Ficha Institucional de Aderência.",
+      "O Conselho Nacional dos Estudantes de Relações Internacionais (CONERI) é o órgão de representação dos estudantes dentro da FENERI, com função predominantemente deliberativa, consultiva e fiscalizadora. É formado pela união dos CAs/DAs filiados e reúne-se 3 vezes ao ano em diferentes regiões do país.",
   },
   {
     id: "faq-3",
-    question: "Quem pode participar dos eventos da FENERI como o ENERI?",
+    question: "Quais são as vantagens da Carteirinha Nacional do Estudante Internacionalista?",
     answer:
-      "Os eventos da FENERI são abertos a todos os estudantes de graduação, pós-graduação, professores, pesquisadores e profissionais graduados em Relações Internacionais ou áreas correlatas (Direito, Economia, Ciência Política, Comércio Exterior, etc.).",
+      "Além da garantia de meia-entrada assegurada pela Lei 12.933/2013, o portador tem descontos de 10% a 80% nos serviços dos parceiros oficiais da FENERI (Vocação Diplomata, What's Rel?, Mission Abroad) e valores reduzidos no ENERI e demais eventos oficiais. Custando apenas R$ 30,00 sem frete adicional, parte do valor é destinada ao seu CA/DA e a projetos de ação social.",
   },
   {
     id: "faq-4",
-    question: "A FENERI emite certificados com horas complementares?",
+    question: "Como o meu Centro Acadêmico (CA/DA) pode se filiar à FENERI?",
     answer:
-      "Sim. Todos os congressos, cursos, workshops e painéis organizados pela FENERI oferecem certificados digitais autenticados com carga horária reconhecida para aproveitamento acadêmico nas universidades.",
+      "Entidades de representação estudantil de cursos de Relações Internacionais regularly constituídas podem se filiar enviando a ficha de regularização à Diretoria da FENERI. Ao se filiar, o CA/DA ganha direito a voto no CONERI e recebe repasses financeiros diretos de cada carteirinha emitida por seus alunos.",
   },
   {
     id: "faq-5",
-    question: "Como entrar em contato com a Diretoria Executiva?",
+    question: "Quem tem direito a voz e voto nas reuniões do CONERI?",
     answer:
-      "Você pode enviar uma mensagem diretamente através do formulário institucional no rodapé desta página ou encaminhar um e-mail para contato@feneri.org.br. Nossa equipe responde em até 48 horas úteis.",
+      "Nas reuniões do CONERI, qualquer estudante de Relações Internacionais, organização legítima ou Membro Consultivo tem direito a voz. O voto é exercido pelos representantes credenciados dos CAs e DAs filiados e regulares.",
   },
 ];

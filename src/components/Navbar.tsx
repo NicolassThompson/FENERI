@@ -39,7 +39,7 @@ export const Navbar: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass-navbar-scrolled py-3" : "glass-navbar-top py-5"
+        isScrolled ? "glass-navbar-scrolled py-2" : "glass-navbar-top py-3"
       }`}
       role="banner"
     >
@@ -49,10 +49,10 @@ export const Navbar: React.FC = () => {
           aria-label="Navegação Principal"
         >
           {/* Logo */}
-          <Logo />
+          <div className="mr-4"><Logo /></div>
 
           {/* Desktop Navigation Links */}
-          <ul className="hidden lg:flex items-center gap-1 xl:gap-2 bg-white/70 backdrop-blur-md px-4 py-1.5 rounded-full border border-gray-200/60 shadow-sm">
+          <ul className="hidden lg:flex flex-1 items-center gap-1 xl:gap-2 bg-white/70 backdrop-blur-md px-4 py-1 rounded-md border border-gray-200/60 shadow-sm whitespace-nowrap">
             {NAV_ITEMS.map((item) => {
               const id = item.href.replace("#", "");
               const isActive = activeSection === id;
@@ -61,7 +61,7 @@ export const Navbar: React.FC = () => {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`relative px-3 py-1.5 text-sm font-medium transition-colors duration-200 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-darker ${
+                    className={`relative px-3 py-1.5 text-sm font-medium transition-colors duration-200 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-darker whitespace-nowrap ${
                       isActive
                         ? "text-primary-darker font-semibold"
                         : "text-gray-700 hover:text-primary-dark"
@@ -82,19 +82,7 @@ export const Navbar: React.FC = () => {
           </ul>
 
           {/* CTA & Mobile Toggle */}
-          <div className="flex items-center gap-3">
-            <Button
-              variant="primary"
-              size="sm"
-              className="hidden sm:inline-flex items-center gap-1.5 shadow-sm"
-              onClick={() => {
-                const el = document.getElementById("faq");
-                el?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              <span>Portal FENERI</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </Button>
+          <div className="flex items-center gap-3 ml-auto">
 
             {/* Mobile Hamburger Button */}
             <button

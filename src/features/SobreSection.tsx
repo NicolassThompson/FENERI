@@ -27,7 +27,7 @@ export const SobreSection: React.FC = () => {
               <div className="relative h-[360px] sm:h-[440px] w-full">
                 <Image
                   src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=1200&auto=format&fit=crop"
-                  alt="Painel de discussões internacionais organizado pela FENERI"
+                  alt="Estudantes de Relações Internacionais reunidos em assembleia"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover object-center"
@@ -43,10 +43,10 @@ export const SobreSection: React.FC = () => {
                 </div>
                 <div>
                   <span className="font-heading font-bold text-2xl text-primary-darker">
-                    +150 CAs/DAs
+                    Entidade Nacional
                   </span>
                   <p className="text-xs text-gray-700 font-medium">
-                    Articulados em rede federal unificada.
+                    Representação unificada dos graduandos em RI do Brasil.
                   </p>
                 </div>
               </div>
@@ -62,7 +62,7 @@ export const SobreSection: React.FC = () => {
             className="lg:col-span-6 flex flex-col items-start"
           >
             <span className="text-xs font-bold tracking-widest uppercase text-primary-dark mb-2">
-              Institucional
+              Quem Somos
             </span>
             <h2
               id="sobre-title"
@@ -71,19 +71,20 @@ export const SobreSection: React.FC = () => {
               Sobre a FENERI
             </h2>
 
-            <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4">
-              Fundada para ser o elo central entre os estudantes de Relações Internacionais e as instâncias decisórias do país, a FENERI representa a voz coletiva de mais de 30 mil estudantes e futuros diplomatas em todo o Brasil.
+            <p className="text-base sm:text-lg text-gray-800 font-semibold leading-relaxed mb-4">
+              A Federação Nacional de Estudantes de Relações Internacionais do Brasil (FENERI) é a entidade geral de representação das e dos estudantes de graduação de Relações Internacionais em todo o Brasil.
             </p>
 
             <p className="text-base text-gray-600 leading-relaxed mb-6">
-              Promovemos o aprimoramento acadêmico, a democratização do acesso a oportunidades de carreira internacional e o fortalecimento do diálogo entre a universidade, os órgãos governamentais e a sociedade civil organizada.
+              Atuamos articulando os Centros e Diretórios Acadêmicos (CERIs) de todo o país, promovendo o debate acadêmico, organizando o Encontro Nacional (ENERI), coordenando o Conselho Nacional (CONERI) e facilitando a inserção dos estudantes no mercado diplomático e internacional.
             </p>
 
             <ul className="space-y-3 mb-8 w-full">
               {[
-                "Representatividade estudantil unificada no Congresso e em órgãos internacionais.",
-                "Organização anual do ENERI (maior encontro da América Latina).",
-                "Estímulo à pesquisa científica, publicação de periódicos e extensão acadêmica.",
+                "Entidade máxima legítima de representação do movimento estudantil de RI.",
+                "Realização do Encontro Nacional dos Estudantes de RI (ENERI).",
+                "Coordenação do Conselho Nacional dos Estudantes de RI (CONERI).",
+                "Emissão da Carteirinha Nacional do Estudante Internacionalista (CNIE).",
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3 text-sm sm:text-base text-gray-800">
                   <CheckCircle2 className="w-5 h-5 text-primary-dark shrink-0 mt-0.5" />
@@ -97,11 +98,12 @@ export const SobreSection: React.FC = () => {
               size="md"
               className="flex items-center gap-2 shadow-sm"
               onClick={() => {
-                window.open("https://feneri.wixsite.com/feneri", "_blank");
+                const el = document.getElementById("coneri");
+                el?.scrollIntoView({ behavior: "smooth" });
               }}
             >
               <FileText className="w-4 h-4" />
-              <span>Baixar Estatuto Social (PDF)</span>
+              <span>Conhecer o CONERI e Estatuto Social</span>
             </Button>
           </motion.div>
         </div>
