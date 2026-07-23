@@ -92,7 +92,7 @@ export const ParceriasSection: React.FC = () => {
 
                   <div className="pt-4 border-t border-gray-100">
                     <div className="bg-bgGreen/60 p-3 rounded-md text-xs font-semibold text-primary-darker mb-4">
-                      ✨ {parceiro.beneficio}
+                      {parceiro.beneficio}
                     </div>
                     <a
                       href={parceiro.url}
